@@ -1,6 +1,6 @@
 # ugacooq_data_pipeline 
 Automated data pipeline for collecting, storing, and processing community member data from Google Sheets into a structured MSSQL database.
-![Ugandan Flag]("C:\Users\MOMO\OneDrive\Desktop\WORK\UGACOOQ\images\ugacooq_pic.png")
+![Ugandan Flag](images/ugacooq_pic.png)
 
 ## Project Overview
 This project implements an **automated data pipeline** for managing community member registrations stored in Google Sheets. As the community grows, the Google Sheet has become increasingly difficult to maintain, leading to **duplicate entries, inconsistent contact information, and outdated records**.  
