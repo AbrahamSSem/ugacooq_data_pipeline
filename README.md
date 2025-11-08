@@ -1,5 +1,6 @@
-# ugacooq_data_pipeline
+# ugacooq_data_pipeline 
 Automated data pipeline for collecting, storing, and processing community member data from Google Sheets into a structured MSSQL database.
+![Ugandan Flag]("C:\Users\MOMO\OneDrive\Desktop\WORK\UGACOOQ\images\ugacooq_pic.png")
 
 ## Project Overview
 This project implements an **automated data pipeline** for managing community member registrations stored in Google Sheets. As the community grows, the Google Sheet has become increasingly difficult to maintain, leading to **duplicate entries, inconsistent contact information, and outdated records**.  
@@ -12,7 +13,7 @@ The pipeline solves these issues by ingesting raw data into a **Bronze-Silver-Go
 
 This ensures a **single source of truth** for member data, enabling more accurate reporting and timely updates.
 
----
+
 
 ## Business Problem
 Currently, the Google Sheet faces multiple operational challenges:  
@@ -23,7 +24,6 @@ Currently, the Google Sheet faces multiple operational challenges:
 
 Without a structured data pipeline, reporting and analytics become unreliable, slowing decision-making for community management.
 
----
 
 ## Solution & Business Impact
 The pipeline enables:  
@@ -35,7 +35,6 @@ The pipeline enables:
 
 This approach ensures community management has **reliable, actionable insights**, allowing for better decision-making and improved member engagement.
 
----
 
 ## Tools & Technologies
 - **Python** — Google Sheets API integration and data ingestion  
@@ -44,14 +43,9 @@ This approach ensures community management has **reliable, actionable insights**
 - **Power BI** — Dashboarding and reporting  
 - **GitHub** — Version control and Agile project management  
 
----
 
 ## Agile Management
 The project follows **Scrum methodology**, with tasks tracked using **GitHub Project boards**. Each sprint delivers a small, testable increment, allowing continuous feedback and iterative improvement.
 
----
-
-## Visuals
-Here’s a visual representation to add context:  
 
 ![Ugandan Flag](https://upload.wikimedia.org/wikipedia/commons/4/4e/Flag_of_Uganda.svg)
