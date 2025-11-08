@@ -40,11 +40,11 @@ This approach ensures community management has **reliable, actionable insights**
 
 
 ## Tools & Technologies
-- **Python** — Google Sheets API integration and data ingestion  
-- **MSSQL Server** — Bronze, Silver, Gold schemas  
-- **SSIS** — ETL automation for pipeline scheduling  
-- **Power BI** — Dashboarding and reporting  
-- **GitHub** — Version control and Agile project management  
+- **Python**: Google Sheets API integration and data ingestion  
+- **MSSQL Server**: Bronze, Silver, Gold schemas  
+- **SSIS**: ETL automation for pipeline scheduling  
+- **Power BI**: Dashboarding and reporting  
+- **GitHub**: Version control and Agile project management  
 
 
 ## Agile Management
