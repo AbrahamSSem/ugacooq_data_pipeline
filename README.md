@@ -51,4 +51,3 @@ This approach ensures community management has **reliable, actionable insights**
 The project follows **Scrum methodology**, with tasks tracked using **GitHub Project boards**. Each sprint delivers a small, testable increment, allowing continuous feedback and iterative improvement.
 
 
-![Ugandan Flag](https://upload.wikimedia.org/wikipedia/commons/4/4e/Flag_of_Uganda.svg)
