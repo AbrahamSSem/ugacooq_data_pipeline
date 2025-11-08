@@ -2,7 +2,7 @@
 Automated data pipeline for collecting, storing, and processing community member data from Google Sheets into a structured MSSQL database.
 
 <p align="center">
-  <img src="images/ugacooq_pic.png" alt="Ugandan Flag" width="150"/>
+  <img src="images/ugacooq_pic.png" alt="Ugandan Flag" width="250"/>
 </p>
 
 ## Project Overview
