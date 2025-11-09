@@ -1,6 +1,6 @@
 /* 
 =================================================================
-Create Database Schemas and the bronze
+Create Database Schemas and the bronze layer table
 =================================================================
 Script purpose:
     This script creates the new schemas (Bronze,Silver & Gold) in the already created database named 'UGACOOQDB'.
