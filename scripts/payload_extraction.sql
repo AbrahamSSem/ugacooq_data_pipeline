@@ -1,14 +1,20 @@
+/*
+This procedure extracts the payload column along with metadata dynamically.
+*/
+
+CREATE PROCEDURE usp_extract_ugacooq_payload
+AS
+BEGIN
 DECLARE @json NVARCHAR(MAX);
 DECLARE @sql NVARCHAR(MAX) = '';
 
--- get a sample payload
 SELECT TOP 1 @json = payload 
 FROM bronze.ugacooq_raw 
 WHERE payload IS NOT NULL;
 
--- build dynamic SQL safely
+
 SELECT @sql = STRING_AGG(
-    'JSON_VALUE(payload,''$."' + REPLACE([key],'"','\"') + '"'' ) AS [' + [key] + ']', 
+    'JSON_VALUE(payload,''$."' + REPLACE([key],'"','\"') + '"'' ) AS [' + [key] + ']', --cont the json value extraction
     ', '
 )
 FROM OPENJSON(@json)
@@ -22,5 +28,5 @@ SELECT source_row,
 FROM bronze.ugacooq_raw
 WHERE payload IS NOT NULL;';
 
--- execute
 EXEC sp_executesql @sql;
+END;
