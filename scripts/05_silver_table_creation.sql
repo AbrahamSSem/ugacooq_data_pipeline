@@ -1,19 +1,14 @@
-DECLARE @json NVARCHAR(MAX); 
-DECLARE @columns NVARCHAR(MAX) = ''; --column list varriable
-       
--- set a json sample with the first row of the payload column
-SELECT TOP 1 @json = payload 
-FROM bronze.ugacooq_raw 
-WHERE payload IS NOT NULL;
+/*
+----------Silver layer Schema tables creation script.---------------
+One staging table > Ugacooq_stg
+Four other table > ugacooq_members, ugacooq_contact_info, ugacooq_employment and ugacooq_next_of_kin
 
--- create a dynamic column list for for the insert. (just the keys) 
-SELECT @columns = STRING_AGG('[' + [key] + ']', ', ') --combines all column headers/keys into a single string.
-FROM OPENJSON(@json)
-WHERE [key] IS NOT NULL AND LTRIM(RTRIM([key])) <> ''; -- remove all empty header columns 
+Note:
+    Script will delete all athe tables and re create them if run, Please rn only after backup.
+*/
 
-select *
-from string_split(@columns,',');
 
+--- staging table creation
 IF OBJECT_ID('silver.ugacooq_stg') IS NOT NULL
     DROP TABLE silver.ugacooq_stg
 GO
@@ -70,3 +65,66 @@ CREATE TABLE silver.ugacooq_stg (
     [CALL NUMBER]VARCHAR(100)
 );
 
+--- members table creation
+IF OBJECT_ID('silver.ugacooq_members') IS NOT NULL
+    DROP TABLE silver.ugacooq_members
+GO
+
+CREATE TABLE silver.ugacooq_members(
+    row_hash VARCHAR(255),
+    ugacoq_id VARCHAR(50),
+    full_name VARCHAR(100),
+    dob DATE,
+    gender VARCHAR(10),
+    place_of_birth VARCHAR(50),
+    marital_status VARCHAR(50),
+    recruitment_mechanism VARCHAR(50),
+    recruitment_agency VARCHAR(50),
+    talent_or_skill VARCHAR(225)
+);
+
+--- contact_info table creation
+IF OBJECT_ID('silver.ugacooq_contact_info') IS NOT NULL
+    DROP TABLE silver.ugacooq_contact_info
+GO
+
+CREATE TABLE silver.ugacooq_contact_info(
+    row_hash VARCHAR(255),
+    email VARCHAR(100),
+    qatar_phone VARCHAR(100),
+    alt_phone VARCHAR(100),
+    qid_or_visa_number VARCHAR(50),
+    visa_status VARCHAR(50),
+    physical_address VARCHAR(50),
+    date_of_entry DATE
+);
+
+--- employment table creation
+IF OBJECT_ID('silver.ugacooq_employment') IS NOT NULL
+    DROP TABLE silver.ugacooq_employment
+GO
+
+CREATE TABLE silver.ugacooq_employment(
+    row_hash VARCHAR(255),
+    employment_status BIT,
+    employer_name VARCHAR(100),
+    employer_address VARCHAR(100),
+    industry VARCHAR(50),
+    job_role VARCHAR(50),
+    employer_phone VARCHAR(50),
+    employer_email VARCHAR(50),
+    contract_duration INT
+);
+
+--- next_of_kin table creation
+IF OBJECT_ID('silver.next_of_kin') IS NOT NULL
+    DROP TABLE silver.ugacooq_next_of_kin
+GO
+
+CREATE TABLE silver.ugacooq_next_of_kin(
+row_hash VARCHAR(255),
+name VARCHAR(100),
+phone VARCHAR(100),
+relatioship VARCHAR(100),
+address VARCHAR(50)
+);
