@@ -1,10 +1,10 @@
 /*
-----------Silver layer Schema tables creation script.---------------
+----------Silver layer Schema tables' creation script.---------------
 One staging table > Ugacooq_stg
-Four other table > ugacooq_members, ugacooq_contact_info, ugacooq_employment and ugacooq_next_of_kin
+Four other tables > ugacooq_members, ugacooq_contact_info, ugacooq_employment and ugacooq_next_of_kin
 
 Note:
-    Script will delete all athe tables and re create them if run, Please rn only after backup.
+    Script will delete all the tables and re create them if run, Please run only after backup.
 */
 
 
