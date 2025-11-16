@@ -173,7 +173,7 @@ To run the data pipeline, execute the following scripts in order:
 
 1.  **`02_gsheet_extraction_to_bronze_table.ipynb`**: This Jupyter Notebook extracts data from the Google Sheet and loads it into the `bronze.ugacooq_raw` table.
 2.  **`04_payload_extraction_and _load_to_silver_stg_table.sql`**: This SQL script unnests the JSON payload from the bronze table and loads the data into a staging table in the silver schema.
-3.  **`05_silver_table_creation.sql`**: This SQL script moves the data from the staging table to the final silver tables, performing final cleaning and deduplication.
+3.  **`05_silver_table_creation.sql`**: This SQL script creates the the silver layer tables.
 
 
 ## License
