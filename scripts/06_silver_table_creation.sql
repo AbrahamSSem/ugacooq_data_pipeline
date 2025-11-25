@@ -76,11 +76,11 @@ CREATE TABLE silver.ugacooq_members(
     full_name VARCHAR(100),
     dob DATE,
     gender VARCHAR(10),
-    place_of_birth VARCHAR(50),
+    place_of_birth VARCHAR(225),
     marital_status VARCHAR(50),
     recruitment_mechanism VARCHAR(50),
     recruitment_agency VARCHAR(50),
-    talent_or_skill VARCHAR(225)
+    talent_or_skill VARCHAR(1000)
 );
 
 --- contact_info table creation
@@ -95,7 +95,7 @@ CREATE TABLE silver.ugacooq_contact_info(
     alt_phone VARCHAR(100),
     qid_or_visa_number VARCHAR(50),
     visa_status VARCHAR(50),
-    physical_address VARCHAR(50),
+    address VARCHAR(50),
     date_of_entry DATE
 );
 

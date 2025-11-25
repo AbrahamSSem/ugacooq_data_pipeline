@@ -41,3 +41,14 @@ CREATE TABLE bronze.ugacooq_raw (
     ingest_batch_id UNIQUEIDENTIFIER NOT NULL
 );
 
+IF OBJECT_ID('bronze.ugacooqRaw_metadata') IS NOT NULL
+    DROP TABLE bronze.ugacooqRaw_metadata;
+GO
+
+CREATE TABLE bronze.ugacooqRaw_metadata (
+    batch_id NVARCHAR(500) NOT NULL,
+    ingested_at DATETIME,
+    number_of_rows INT,
+    first_row INT,
+    last_row INT
+);

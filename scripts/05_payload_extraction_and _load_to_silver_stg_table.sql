@@ -15,10 +15,16 @@ BEGIN
         DECLARE @select NVARCHAR(MAX) = ''; --seslct variable for dynamic extraction
         DECLARE @sql NVARCHAR(MAX) = '';
 
+        ---get the latest batch id--
+        DECLARE @latest_batch_id NVARCHAR(500)
+        SELECT @latest_batch_id = MAX(ingest_batch_id)
+        FROM bronze.ugacooq_raw;
+
         -- set a json sample with the first row of the payload column
         SELECT TOP 1 @json = payload 
         FROM bronze.ugacooq_raw 
-        WHERE payload IS NOT NULL;
+        WHERE ingest_batch_id = @latest_batch_id
+            AND payload IS NOT NULL;
 
         -- create a dynamic column list for for the insert. (just the keys) 
         SELECT @columns = STRING_AGG('[' + [key] + ']', ', ') --combines all column headers/keys into a single string.
@@ -26,7 +32,7 @@ BEGIN
         WHERE [key] IS NOT NULL AND LTRIM(RTRIM([key])) <> ''; -- remove all empty header columns 
 
     
-        PRINT'>> Extracts the payload column from: bronze.ugacooq_raw <<';
+        PRINT'>> Extracts the payload column from bronze.ugacooq_raw table <<';
     
         SELECT @select = STRING_AGG(
             'JSON_VALUE(payload,''$."' + REPLACE([key],'"','\"') + '"'' ) AS [' + [key] + ']', -- replace the single quotes for the keys and concat them.
@@ -36,7 +42,7 @@ BEGIN
         WHERE [key] IS NOT NULL AND LTRIM(RTRIM([key])) <> ''; 
 
 
-        PRINT'>> Inserts the extracted keys info into: silver.ugacooq_stg <<';
+        PRINT'>> Inserts the extracted keys info into silver.ugacooq_stg table <<';
   
         SET @sql = '
         INSERT INTO silver.ugacooq_stg (source_row,row_hash,ingest_batch_id,' + @columns + ') 
@@ -46,7 +52,8 @@ BEGIN
             ingest_batch_id,
             ' + @select + '
         FROM bronze.ugacooq_raw
-        WHERE payload IS NOT NULL;';
+        WHERE ingest_batch_id = '''+ @latest_batch_id +'''
+            AND payload IS NOT NULL;';
 
         -- excute the query to laod into the silver staging table
         EXEC sp_executesql @sql;
