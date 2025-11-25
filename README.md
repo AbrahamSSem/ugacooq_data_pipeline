@@ -89,45 +89,10 @@ The Bronze schema contains the raw, unaltered data ingested from the Google Shee
 ### Silver Schema
 The Silver schema contains cleaned, standardized, and deduplicated data.
 
--   **`silver.ugacooq_members`**: Stores the core member information.
-    -   `row_hash`: Foreign key linking to the bronze table.
-    -   `ugacoq_id`: Unique identifier for the member.
-    -   `full_name`: Full name of the member.
-    -   `dob`: Date of birth.
-    -   `gender`: Gender of the member.
-    -   `place_of_birth`: Place of birth.
-    -   `marital_status`: Marital status.
-    -   `recruitment_mechanism`: How the member was recruited.
-    -   `recruitment_agency`: Name of the recruitment agency, if applicable.
-    -   `talent_or_skill`: Talents or skills of the member.
 
--   **`silver.ugacooq_contact_info`**: Stores contact information for each member.
-    -   `row_hash`: Foreign key linking to the `ugacooq_members` table.
-    -   `email`: Email address.
-    -   `qatar_phone`: Phone number in Qatar.
-    -   `alt_phone`: Alternative phone number.
-    -   `qid_or_visa_number`: Qatar ID or visa number.
-    -   `visa_status`: Visa status.
-    -   `physical_address`: Physical address in Qatar.
-    -   `date_of_entry`: Date of entry into Qatar.
+  <img src="images/silver_layer_ERD.png" alt="ERD" width="500"/>
 
--   **`silver.ugacooq_employment`**: Stores employment information.
-    -   `row_hash`: Foreign key linking to the `ugacooq_members` table.
-    -   `employment_status`: Employment status (e.g., employed, unemployed).
-    -   `employer_name`: Name of the employer.
-    -   `employer_address`: Address of the employer.
-    -   `industry`: Industry of employment.
-    -   `job_role`: Job role or position.
-    -   `employer_phone`: Employer's phone number.
-    -   `employer_email`: Employer's email address.
-    -   `contract_duration`: Duration of the employment contract.
 
--   **`silver.ugacooq_next_of_kin`**: Stores next of kin information.
-    -   `row_hash`: Foreign key linking to the `ugacooq_members` table.
-    -   `name`: Name of the next of kin.
-    -   `phone`: Phone number of the next of kin.
-    -   `relatioship`: Relationship with the next of kin.
-    -   `address`: Address of the next of kin.
 
 
 ### Gold Schema
